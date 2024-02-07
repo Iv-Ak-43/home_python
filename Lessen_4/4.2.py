@@ -6,7 +6,7 @@
 
 
 def flatten_and_sort(array):
-    result_list = sorted([j for i in array for j in i])
+    result_list = sorted([a for i in array for a in i])
     return list(result_list)
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
