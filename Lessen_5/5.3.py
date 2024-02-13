@@ -17,19 +17,21 @@
 # Анна Самохина: Фродо, 3
 #
 
-
 def everything_for_your_cat(cats_data):
     owner_cats = {}
-    for cat in cats_data:
-        owner = cat[2] + ' ' + cat[3]
-        if owner not in owner_cats:
-            owner_cats[owner] = [(cat[0], cat[1])]
-        else:
-            owner_cats[owner].append((cat[0], cat[1]))
 
-    result = '\n'.join(
-        [f'{owner}: {", ".join(map(str, cats))}' for owner, cats in owner_cats.items()])
-    return result
+    for cat in cats_data:
+        owner = (cat[2], cat[3])
+        cat_info = f'{cat[0]}, {cat[1]}'
+
+        if owner not in owner_cats:
+            owner_cats[owner] = [cat_info]
+        else:
+            owner_cats[owner].append(cat_info)
+
+    our_str = '\n'.join([f'{owner[0]} {owner[1]}: {"; ".join(cats)}' for owner, cats in owner_cats.items()])
+
+    return our_str
 
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
