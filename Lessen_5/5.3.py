@@ -32,7 +32,7 @@ def everything_for_your_cat(cats_data):
         cats_str = '; '.join([f'{cat[0]}, {cat[1]}' for cat in cats])
         our_str += f'{owner[0]} {owner[1]}: {cats_str}\n'
     return our_str
-
+# готово
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
 
