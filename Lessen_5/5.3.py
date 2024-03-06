@@ -21,16 +21,17 @@
 def everything_for_your_cat(cats_data):
     owner_cats = {}
     for cat in cats_data:
-        owner = cat[2] + ' ' + cat[3]
-        if owner not in owner_cats:
-            owner_cats[owner] = [(cat[0], cat[1])]
+        name, age, owner_name, owner_surname = cat
+        if (owner_name, owner_surname) in owner_cats:
+            owner_cats[(owner_name, owner_surname)].append((name, age))
         else:
-            owner_cats[owner].append((cat[0], cat[1]))
+            owner_cats[(owner_name, owner_surname)] = [(name, age)]
 
-    result = '\n'.join(
-        [f'{owner}: {", ".join(map(str, cats))}' for owner, cats in owner_cats.items()])
-    return result
-
+    our_str = ''
+    for owner, cats in owner_cats.items():
+        cats_str = '; '.join([f'{cat[0]}, {cat[1]}' for cat in cats])
+        our_str += f'{owner[0]} {owner[1]}: {cats_str}\n'
+    return our_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
